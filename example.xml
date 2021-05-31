@@ -1,0 +1,82 @@
+<CollectionOfProductDto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Href>https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/products/onhand</Href>
+        <Value>
+            <ProductDto>
+                <Href>
+                    https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/products/CC-9011208-WW</Href>
+                <Self>
+                <Href>
+                    https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/products/CC-9011208-WW</Href>
+                </Self>
+                <Code>
+                   CA-9011206-AP
+                </Code>
+                <Title>
+                    5000D Tempered Glass Mid-Tower; RED
+                </Title>
+                <Description>
+                    5000D Tempered Glass Mid-Tower; RED
+                </Description>
+                <SellingPrice>
+                    1100
+                </SellingPrice>
+                <OnHand>
+                    23
+                </OnHand>
+                <ProductLine>
+                    Corsair
+                </ProductLine>
+                <VendorCode>
+                    CC-9011208-WW
+                </VendorCode>
+                <UpcBarcode>
+                    840006627432
+                </UpcBarcode>
+                <Eta xsi:nil="true"/>
+                <Status>
+                    Active
+                </Status>
+                <DateCreated/>
+                <DateModified/>
+            </ProductDto>
+
+            <ProductDto>
+                <Href>
+                    https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/products/CC-9011208-WW</Href>
+                <Self>
+                <Href>
+                    https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/products/CC-9011208-WW</Href>
+                </Self>
+                <Code>
+                    CC-9011208-WW
+                </Code>
+                <Title>
+                    5000D Tempered Glass Mid-Tower; Black
+                </Title>
+                <Description>
+                    5000D Tempered Glass Mid-Tower; Black
+                </Description>
+                <SellingPrice>
+                    2100
+                </SellingPrice>
+                <OnHand>
+                    35
+                </OnHand>
+                <ProductLine>
+                    Corsair
+                </ProductLine>
+                <VendorCode>
+                    CC-9011208-WW
+                </VendorCode>
+                <UpcBarcode>
+                    840006627432
+                </UpcBarcode>
+                <Eta xsi:nil="true"/>
+                <Status>
+                    Active
+                </Status>
+                <DateCreated/>
+                <DateModified/>
+            </ProductDto>
+        </Value>
+</CollectionOfProductDto>
