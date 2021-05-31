@@ -58,7 +58,6 @@ function hbdev_run_import() {
 
 				echo '<span style="color: red;">Duplicate Product could not be added >> Code: ' . $sku . ' >> ID: ' . $existingPost[0]->ID . ' >> Stock: ' .  $existingStock  . '</span><br/>' ;
 			}
-			echo "Nex";
 			continue;
 		}                          
 
