@@ -13,8 +13,8 @@ function hbdev_run_import() {
 
 
 	// Set the XML Feed URL Here
-	$xml = simplexml_load_file('https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/Products/onhand');
-	$productXML = simplexml_load_file($xml);
+	$productXML = simplexml_load_file('https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/Products/onhand');
+	// $productXML = simplexml_load_file($file);
 
 	// [Product Arr]
 	$productArr = $productXML->Value->ProductDto;
@@ -58,6 +58,7 @@ function hbdev_run_import() {
 
 				echo '<span style="color: red;">Duplicate Product could not be added >> Code: ' . $sku . ' >> ID: ' . $existingPost[0]->ID . ' >> Stock: ' .  $existingStock  . '</span><br/>' ;
 			}
+			echo "Nex";
 			continue;
 		}                          
 
