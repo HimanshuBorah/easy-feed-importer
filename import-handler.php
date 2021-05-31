@@ -27,6 +27,9 @@ function hbdev_run_import() {
 	// Loop thru all the properties
 	foreach ( $productArr as $props ) {
 
+		// Init Featured Image
+		$thumb = ' ';
+
 		// Get the SKU
 		$sku = (string)$props->Code;
 		$sku = trim( $sku );
