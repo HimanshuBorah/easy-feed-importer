@@ -8,6 +8,15 @@
 * Author URI: NA
 **/
 
+/**
+ * 
+ *  IMPORTANT : This plugin uses the following plugin 
+ * 
+ *   https://wordpress.org/plugins/featured-image-from-url/
+ * 
+ *   Please Install this plugin 
+ */
+
 // Import Handler
 require_once( "import-handler.php" );
 
@@ -70,4 +79,3 @@ add_action('init', function() {
 function hbdev_run_cron() {
     hbdev_run_import();
 }
-

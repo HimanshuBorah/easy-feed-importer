@@ -4,7 +4,7 @@
 require_once( ABSPATH . "wp-includes/pluggable.php" );
 
 // Image Handler
-require_once( "image-handler.php" );
+// require_once( "image-handler.php" );
 
 function hbdev_run_import() {
 	
@@ -26,12 +26,6 @@ function hbdev_run_import() {
 
 	// Loop thru all the properties
 	foreach ( $productArr as $props ) {
-
-		// Init Featured Image
-		$thumb = ' ';
-
-		// Init Attached Id
-		$attach_id = ' ';
 
 		// Get the SKU
 		$sku = (string)$props->Code;
@@ -140,13 +134,29 @@ function hbdev_run_import() {
 
 				// Upload Featured Image
 				if ( $thumb !== ' ') {
-					$attach_id = hbel_insert_attachment_from_url( (string)$thumb );
+					// Upload
+					// $attach_id = hbel_insert_attachment_from_url( (string)$thumb );
+
+					// Custom field thumb
+					// update_post_meta($product_id, '_hprod_thumb', $thumb);   //  Custom Meta for Images
+				    
+					fifu_dev_set_image($product_id, $thumb);
+
+					// Set thumb back to nothing					
+		            $thumb = ' ';
 
 				} 
 
-				if ( $attach_id && $attach_id !== ' ' ) {
-					set_post_thumbnail( $product_id, $attach_id );	   
-				}
+				// 	if ( $attach_id && $attach_id !== ' ' ) {
+
+				// 		// Set featured img
+				// 		set_post_thumbnail( $product_id, $attach_id );	
+						
+						
+				// 		// Init Attached Id
+				// 		$attach_id = ' ';
+				// }
+
 			    echo '<span style="color: green;">Product added >> Code: ' . $sku . ' >> ID: ' . $product_id . ' >> Stock ' . $stock . '</span><br/>' ;
 
 			}
