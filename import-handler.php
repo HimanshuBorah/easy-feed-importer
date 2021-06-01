@@ -30,6 +30,9 @@ function hbdev_run_import() {
 		// Init Featured Image
 		$thumb = ' ';
 
+		// Init Attached Id
+		$attach_id = ' ';
+
 		// Get the SKU
 		$sku = (string)$props->Code;
 		$sku = trim( $sku );
@@ -141,7 +144,7 @@ function hbdev_run_import() {
 
 				} 
 
-				if ( $attach_id ) {
+				if ( $attach_id && $attach_id !== ' ' ) {
 					set_post_thumbnail( $product_id, $attach_id );	   
 				}
 			    echo '<span style="color: green;">Product added >> Code: ' . $sku . ' >> ID: ' . $product_id . ' >> Stock ' . $stock . '</span><br/>' ;
