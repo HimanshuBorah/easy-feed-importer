@@ -13,7 +13,7 @@ function hbdev_run_import() {
 
 
 	// Set the XML Feed URL Here
-	$productXML = simplexml_load_file('https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/Products/onhand');
+	$productXML = simplexml_load_file('https://rctdatafeed.azurewebsites.net/xml/a325ca80-0eb1-41a9-8c09-afa42d866618/v1/Products');
 	// $productXML = simplexml_load_file($file);
 
 	// [Product Arr]
