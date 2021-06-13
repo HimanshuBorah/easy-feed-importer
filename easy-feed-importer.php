@@ -21,21 +21,16 @@
 require_once( "import-handler.php" );
 
 
-/**
- * Register Import Page.
- */
-add_action( 'admin_menu', function (){
-    add_menu_page( 
-        __( 'Easy Import', 'textdomain' ),
-        'Easy Import',
-        'manage_options',
-        'easyimportfeed',
-        'hbel_easy_import_fn',
-        'dashicons-xing',
-        6
-    ); 
-} );
- 
+function hbel_options_panel(){
+    add_menu_page('Easy Import', 'Easy Import', 'manage_options', 'easy-importfeed', 'hbel_easy_import_fn', 'dashicons-xing', 6);
+}
+add_action('admin_menu', 'hbel_options_panel');
+   
+// Settings
+require_once( "settings.php" );
+
+
+
 /**
  * Display a custom menu page
  */
@@ -58,6 +53,7 @@ function hbel_easy_import_fn(){
 
 }
 
+
 /**
  * 
  *  Set Scheduled
@@ -79,3 +75,5 @@ add_action('init', function() {
 function hbdev_run_cron() {
     hbdev_run_import();
 }
+
+
