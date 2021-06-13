@@ -34,6 +34,20 @@ function hbdev_run_import() {
 		// On Hand
 		$stock = (string)$props->OnHand;
 
+		// Get the actual Selling Price
+		$price = (string)$props->SellingPrice;
+
+		// Get the price increase percentage from settings
+		$percent = get_option('efi_price_increase_by');
+
+		// Init new peice, set to actual selling price by default
+		$newPrice = $price;
+
+		// If price increase percentage is set calculate the newPrice
+		if ( $percent ) {
+			$newPrice *= (1 + $percent / 100);
+		}
+
 		// Check post by SKU ID
 		$existingPost = get_posts( array(
 			'post_type' => 'product', 
@@ -47,12 +61,30 @@ function hbdev_run_import() {
 			// get existing product stock
 			$existingStock = get_post_meta( $existingPost[0]->ID, '_stock', true);
 
+			// get existing product's actual price
+			$existingActualPrice = get_post_meta( $existingPost[0]->ID, '_hprod_price', true);
+
 			
-			if ( $existingStock !== $stock ) {
+			if ( $existingActualPrice !== $price ) {
+
+				// Update the actual Selling price
+				update_post_meta( $existingPost[0]->ID, '_hprod_price', $price);
+
+				// Update product price after increasing its value
+				update_post_meta($product_id, '_price', $newPrice);            //  Price
+				update_post_meta($product_id, '_regular_price', $newPrice);    //  Price
+
+				$afterUpdatedPrice = get_post_meta( $existingPost[0]->ID, '_stock', true);
+			
+				echo '<span style="color: red;">Duplicate Product could not be added >> Code: ' . $sku . ' >> ID: ' . $existingPost[0]->ID . ' >> Price: ' .  $newPrice  . '</span><span style="color: blue; font-weight: bold; "> ( Updated >> Price: ' . $afterUpdatedPrice . ' ) </span><br/>' ;
+			
+			} else if ( $existingStock !== $stock ) {
+
+				// Update the stock
 				update_post_meta( $existingPost[0]->ID, '_stock', $stock);
-				$afterUpdated = get_post_meta( $existingPost[0]->ID, '_stock', true);
+				$afterUpdatedStock = get_post_meta( $existingPost[0]->ID, '_stock', true);
 			
-				echo '<span style="color: red;">Duplicate Product could not be added >> Code: ' . $sku . ' >> ID: ' . $existingPost[0]->ID . ' >> Stock: ' .  $existingStock  . '</span><span style="color: blue; font-weight: bold; "> ( Updated >> Stock: ' . $afterUpdated . ' ) </span><br/>' ;
+				echo '<span style="color: red;">Duplicate Product could not be added >> Code: ' . $sku . ' >> ID: ' . $existingPost[0]->ID . ' >> Stock: ' .  $existingStock  . '</span><span style="color: blue; font-weight: bold; "> ( Updated >> Stock: ' . $afterUpdatedStock . ' ) </span><br/>' ;
 			
 			} else {
 
@@ -67,8 +99,6 @@ function hbdev_run_import() {
 		// Get the desc
 		$desc = (string)$props->Description;
 
-		// Get the Selling Price
-		$price = (string)$props->SellingPrice;
 
 		// Category
 		$cat = (string)$props->ProductLine;
@@ -120,16 +150,6 @@ function hbdev_run_import() {
 				update_post_meta($product_id, '_stock', $stock);            //  Stock
 
 				update_post_meta($product_id, '_hprod_price', $price);      //  Actual Price
-
-				// Get the percentage from settings
-				$percent = get_option('efi_price_increase_by');
-
-				// Init new peice
-				$newPrice = $price;
-
-				if ( $percent ) {
-					$newPrice *= (1 + $percent / 100);
-				}
 
 
 				update_post_meta($product_id, '_price', $newPrice);            //  Price
