@@ -119,9 +119,21 @@ function hbdev_run_import() {
 				update_post_meta($product_id, '_manage_stock', 'yes');      //  Manage Stock
 				update_post_meta($product_id, '_stock', $stock);            //  Stock
 
-				
-				update_post_meta($product_id, '_price', $price);            //  Price
-				update_post_meta($product_id, '_regular_price', $price);    //  Price
+				update_post_meta($product_id, '_hprod_price', $price);      //  Actual Price
+
+				// Get the percentage from settings
+				$percent = get_option('efi_price_increase_by');
+
+				// Init new peice
+				$newPrice = $price;
+
+				if ( $percent ) {
+					$newPrice *= (1 + $percent / 100);
+				}
+
+
+				update_post_meta($product_id, '_price', $newPrice);            //  Price
+				update_post_meta($product_id, '_regular_price', $newPrice);    //  Price
 
 				wp_set_object_terms( $product_id, $cat, 'product_cat' );    // Cat
 
