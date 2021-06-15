@@ -17,8 +17,6 @@
  *   Please Install this plugin 
  */
 
-// Settings
-require_once( "settings.php" );
 
 // Import Handler
 require_once( "import-handler.php" );
@@ -29,6 +27,8 @@ function hbel_options_panel(){
 }
 add_action('admin_menu', 'hbel_options_panel');
    
+// Settings
+require_once( "settings.php" );
 
 
 
