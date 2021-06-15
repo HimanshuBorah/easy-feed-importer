@@ -71,8 +71,8 @@ function hbdev_run_import() {
 				update_post_meta( $existingPost[0]->ID, '_hprod_price', $price);
 
 				// Update product price after increasing its value
-				update_post_meta($product_id, '_price', $newPrice);            //  Price
-				update_post_meta($product_id, '_regular_price', $newPrice);    //  Price
+				update_post_meta($product_id, '_price', (string)$newPrice);            //  Price
+				update_post_meta($product_id, '_regular_price', (string)$newPrice);    //  Price
 
 				$afterUpdatedPrice = get_post_meta( $existingPost[0]->ID, '_stock', true);
 			
